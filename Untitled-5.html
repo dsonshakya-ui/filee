@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barshaverse ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+  --pink:#f5b9d7;--rose:#dc78ad;--purple:#b9a2e8;
+  --cream:#fff8f6;--ink:#58445f;--muted:#917d96;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;color:var(--ink);
+  background:linear-gradient(135deg,#fff7f5,#f8e8f6,#eee8ff);
+  min-height:100vh;overflow-x:hidden;
+}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #a36ac5;outline-offset:3px}
+button:disabled{opacity:.5;cursor:not-allowed}
+.topbar{
+  height:75px;padding:0 5%;display:flex;align-items:center;
+  justify-content:space-between;position:relative;z-index:3;
+  background:#fff8f5bd;backdrop-filter:blur(14px);
+  border-bottom:1px solid #ffffffb0;
+}
+.brand{font-family:'Playfair Display',serif;font-size:27px;
+  color:#b45b9a;text-decoration:none;font-style:italic}
+.brand span{color:#ed8dbb}
+.stats{display:flex;gap:10px;align-items:center}
+.stat{background:#fff;padding:9px 14px;border-radius:25px;
+  font-size:12px;box-shadow:0 4px 15px #a76b9915}
+.sound{border:0;border-radius:50%;width:38px;height:38px;
+  background:#fff;color:#b45b9a;font-size:19px}
+.layout{display:grid;grid-template-columns:175px 1fr;min-height:calc(100vh - 75px)}
+.sidebar{padding:30px 14px;display:flex;flex-direction:column;gap:12px}
+.nav{
+  border:1px solid #ffffffa0;background:#ffffff9c;color:#745a7b;
+  padding:13px;border-radius:18px;text-align:left;
+  font-size:13px;transition:.2s;
+}
+.nav:hover,.nav.active{background:linear-gradient(110deg,#efacd0,#c9afea);
+  color:white;transform:translateX(4px)}
+.nav span{margin-left:8px}
+main{min-width:0;padding:35px 5% 70px}
+.hero{
+  min-height:470px;border-radius:35px;overflow:hidden;position:relative;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  padding:45px 6%;
+  background:
+    radial-gradient(circle at 75% 20%,#fff8d6 0,transparent 15%),
+    radial-gradient(circle at 80% 75%,#d6c4fa 0,transparent 35%),
+    linear-gradient(130deg,#f8d8e9,#e8dafa);
+  box-shadow:0 18px 50px #986c9b20;
+}
+.hero:before,.hero:after{content:"✦";position:absolute;color:#fff;
+  font-size:28px;animation:twinkle 2s infinite alternate}
+.hero:before{top:12%;left:48%}.hero:after{bottom:18%;right:8%}
+@keyframes twinkle{to{opacity:.25;transform:scale(.7)}}
+.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:10px;
+  font-weight:700;color:#a76caa}
+h1{font:600 clamp(40px,5vw,65px)/1.12 'Playfair Display',serif;margin:18px 0}
+h1 span{color:#bd68a3}
+.hero p{max-width:390px;color:#816c88;line-height:1.9;font-size:14px}
+.primary{
+  border:0;background:#9f659f;color:white;border-radius:30px;
+  padding:14px 24px;margin-top:25px;box-shadow:0 8px 20px #93629b30;
+  transition:.2s
+}
+.primary:hover{transform:translateY(-3px)}
+.avatar-area{display:grid;place-items:center;position:relative;min-height:330px}
+.avatar{
+  width:230px;height:270px;border-radius:48% 48% 35% 35%;
+  background:linear-gradient(145deg,#fff5fa,#e8d9ff);
+  border:7px solid #ffffffb8;box-shadow:0 18px 35px #815b9b25;
+  display:flex;align-items:center;justify-content:center;
+  font-size:125px;animation:float 4s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-13px)}}
+.avatar-label{position:absolute;bottom:5px;background:#ffffffdf;
+  padding:12px 20px;border-radius:30px;font-size:12px}
+.bubble{position:absolute;top:5px;right:0;background:white;
+  padding:13px 18px;border-radius:20px;font-size:12px;
+  box-shadow:0 6px 20px #765a9220}
+section{margin-top:65px;scroll-margin-top:30px}
+.heading{text-align:center;margin-bottom:28px}
+.heading h2{font:500 35px 'Playfair Display',serif}
+.heading p{font-size:13px;color:var(--muted);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{
+  background:#ffffffc9;border:1px solid white;border-radius:24px;
+  padding:24px;box-shadow:0 8px 25px #8b65950b;transition:.25s
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px #8b65951c}
+.card-icon{font-size:35px}
+.card h3{font:600 21px 'Playfair Display',serif;margin:14px 0 8px}
+.card p{font-size:12px;color:var(--muted);line-height:1.8;min-height:45px}
+.small-btn{margin-top:17px;border:0;background:#f5dce9;color:#945c86;
+  padding:10px 16px;border-radius:20px;font-size:12px}
+.game-area{margin-top:20px;background:#ffffffb9;border-radius:25px;
+  padding:25px;text-align:center}
+.game-area p{color:var(--muted);font-size:13px;line-height:1.8}
+.star-field{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:20px}
+.hidden-star{border:0;background:#f9e6f2;border-radius:50%;
+  width:52px;height:52px;font-size:23px;transition:.2s}
+.hidden-star:hover{transform:scale(1.2) rotate(15deg)}
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.gift{border:0;background:linear-gradient(145deg,#f9d4e9,#d9c9f8);
+  border-radius:22px;padding:30px 10px;font-size:45px;transition:.2s}
+.gift:hover{transform:translateY(-7px) rotate(-3deg)}
+.gift span{display:block;font-size:12px;color:#805d87;margin-top:10px}
+.letter{
+  background:linear-gradient(140deg,#fff,#fff4f9);
+  max-width:700px;margin:auto;padding:40px 30px;text-align:center;
+  border-radius:28px;box-shadow:0 10px 35px #95648e15
+}
+.letter h2{font:500 35px 'Playfair Display',serif;margin:15px 0}
+.letter p{font-size:13px;line-height:2;color:var(--muted)}
+footer{text-align:center;padding:35px;color:#a88eaa;font-size:11px}
+.modal{
+  position:fixed;inset:0;background:#35233e85;display:none;
+  place-items:center;padding:20px;z-index:10;backdrop-filter:blur(5px)
+}
+.modal.show{display:grid}
+.modal-box{max-width:400px;width:100%;background:#fff9f8;
+  border-radius:28px;padding:35px;text-align:center;animation:pop .25s}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box .big{font-size:50px}
+.modal-box h3{font:500 27px 'Playfair Display',serif;margin:12px}
+.modal-box p{font-size:13px;line-height:1.9;color:var(--muted)}
+.close{border:0;background:#f4d9e9;color:#855a82;padding:11px 22px;
+  border-radius:20px;margin-top:20px}
+#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
+  background:#654b70;color:white;padding:13px 20px;border-radius:25px;
+  font-size:12px;opacity:0;pointer-events:none;transition:.3s;z-index:20}
+#toast.show{opacity:1}
+.progress{height:8px;background:#eee0ef;border-radius:20px;margin-top:15px;overflow:hidden}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,#ec9fc8,#a78be1);transition:.3s}
+@media(max-width:800px){
+ .layout{grid-template-columns:1fr}
+ .sidebar{position:sticky;top:0;z-index:5;flex-direction:row;overflow:auto;
+  padding:9px;background:#fff9f5ed;backdrop-filter:blur(10px)}
+ .nav{white-space:nowrap;padding:10px 12px}
+ .nav span{margin-left:4px}
+ main{padding:20px 5% 50px}
+ .hero{grid-template-columns:1fr;text-align:center;padding:35px 22px}
+ .hero p{margin:auto}
+ .avatar-area{min-height:310px;margin-top:25px}
+ .bubble{right:3%}
+ .grid{grid-template-columns:1fr}
+ .gifts{grid-template-columns:1fr}
+ .heading h2{font-size:29px}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="#home">Barshaverse ♡</a>
+  <div class="stats">
+    <div class="stat">⭐ <span id="starCount">0</span> / 100</div>
+    <div class="stat">LV. <span id="level">1</span></div>
+    <button class="sound" id="soundBtn" title="Sound">♫</button>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <a class="nav active" href="#home">⌂ <span>Home</span></a>
+  <a class="nav" href="#games">🎮 <span>Games</span></a>
+  <a class="nav" href="#surprises">🎁 <span>Surprises</span></a>
+  <a class="nav" href="#world">🌸 <span>Her World</span></a>
+  <button class="nav" onclick="openSecret()">🔐 <span>Secret Room</span></button>
+</aside>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">✧ A magical little place ✧</div>
+    <h1>A little world<br>for <span>Barsha.</span></h1>
+    <p>A place filled with tiny adventures, hidden stars, lovely surprises and a little bit of magic. Ready to explore?</p>
+    <button class="primary" onclick="startAdventure()">Start Adventure ✨</button>
+  </div>
+  <div class="avatar-area">
+    <div class="bubble" id="speech">Hi! Welcome to my world ♡</div>
+    <div class="avatar" id="avatar">👩🏻‍🎨</div>
+    <div class="avatar-label">Your little guide — Barsha ♡</div>
+  </div>
+</section>
+
+<section id="games">
+  <div class="heading">
+    <div class="eyebrow">✧ Play a little ✧</div>
+    <h2>Mini Adventures</h2>
+    <p>Complete little challenges and collect magical stars.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Find the Stars</h3>
+      <p>Five little stars are hiding. Can you find all of them?</p>
+      <button class="small-btn" onclick="startStars()">Play treasure hunt →</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <h3>Lucky Number</h3>
+      <p>Guess the secret number between 1 and 5.</p>
+      <button class="small-btn" onclick="startGuess()">Play guessing game →</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">💌</div>
+      <h3>Memory Match</h3>
+      <p>Find the matching pairs of cute little symbols.</p>
+      <button class="small-btn" onclick="startMemory()">Play memory game →</button>
+    </div>
+  </div>
+
+  <div class="game-area" id="gameArea">
+    <div style="font-size:35px">🌷</div>
+    <h3 style="font-family:'Playfair Display';margin:10px">Your adventure awaits!</h3>
+    <p>Choose any mini-game above to begin.</p>
+  </div>
+</section>
+
+<section id="surprises">
+  <div class="heading">
+    <div class="eyebrow">✧ Something is hiding ✧</div>
+    <h2>Mystery Gift Boxes</h2>
+    <p>Choose a box. Each one has a different surprise.</p>
+  </div>
+  <div class="gifts">
+    <button class="gift" onclick="openGift(0)">🎁<span>Gift One</span></button>
+    <button class="gift" onclick="openGift(1)">🎀<span>Gift Two</span></button>
+    <button class="gift" onclick="openGift(2)">💝<span>Gift Three</span></button>
+  </div>
+</section>
+
+<section id="world">
+  <div class="heading">
+    <div class="eyebrow">✧ Little things you love ✧</div>
+    <h2>Her Little World</h2>
+    <p>A few lovely things for the artist, explorer and music lover.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">🎨</div><h3>Little Artist</h3><p>May your imagination always have a canvas.</p></div>
+    <div class="card"><div class="card-icon">🌍</div><h3>Little Explorer</h3><p>May you discover places that become beautiful memories.</p></div>
+    <div class="card"><div class="card-icon">🎵</div><h3>Little Melody</h3><p>May there always be a song that makes your day.</p></div>
+  </div>
+</section>
+
+<section id="final">
+  <div class="letter">
+    <div class="eyebrow">✧ A little note for you ✧</div>
+    <div style="font-size:35px;margin:15px">💗</div>
+    <h2>Dear Barsha,</h2>
+    <p>
+      I hope you never stop doing the things that make you happy.
+      Keep painting, keep exploring, keep singing, and keep finding
+      beauty in the little things around you.
+      <br><br>
+      May your days be full of kind people, lovely memories,
+      unexpected happiness and countless reasons to smile.
+      <br><br>
+      This little world was made to bring a little happiness
+      to your day. I hope it did.
+    </p>
+    <div style="font:italic 23px 'Playfair Display';color:#d47cac;margin-top:20px">Stay wonderful ♡</div>
+  </div>
+</section>
+<footer>Made with creativity, kindness and a little magic ♡</footer>
+</main>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <div class="big" id="modalIcon">✨</div>
+    <h3 id="modalTitle">A little surprise</h3>
+    <p id="modalText"></p>
+    <button class="close" onclick="closeModal()">Close with a smile ♡</button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+let stars=0;
+let soundOn=false;
+let audioContext=null;
+const collected=new Set();
+const giftsOpened=new Set();
+let memoryCards=[];
+let firstCard=null;
+let lockBoard=false;
+let matched=0;
+let secretNumber=0;
+let guesses=0;
+
+function updateStats(){
+  document.getElementById('starCount').textContent=stars;
+  document.getElementById('level').textContent=Math.floor(stars/20)+1;
+}
+function addStars(amount){
+  stars=Math.min(100,stars+amount);
+  updateStats();
+}
+function toast(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+function showModal(icon,title,message){
+  document.getElementById('modalIcon').textContent=icon;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalText').textContent=message;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('show');
+}
+function startAdventure(){
+  document.getElementById('speech').textContent='Yay! Let’s explore together! ✨';
+  document.getElementById('avatar').textContent='👩🏻‍🎨';
+  document.getElementById('games').scrollIntoView({behavior:'smooth'});
+  toast('Your adventure has started!');
+}
+function openGift(n){
+  if(giftsOpened.has(n)){
+    toast('You already opened this gift ♡');return;
+  }
+  giftsOpened.add(n);
+  addStars(5);
+  const messages=[
+    ['🌷','A little wish','May something unexpectedly lovely happen to you today.'],
+    ['🦋','A little reminder','You do not need to be perfect to make the world more beautiful. Just be yourself.'],
+    ['✨','Pocketful of stars','May your dreams stay big and your curiosity stay alive.']
+  ];
+  showModal(...messages[n]);
+  document.getElementById('speech').textContent='You found a gift! That is lovely! 💗';
+}
+function startStars(){
+  const area=document.getElementById('gameArea');
+  collected.clear();
+  area.innerHTML=`
+    <h3 style="font-family:'Playfair Display';font-size:25px">Find the hidden stars ⭐</h3>
+    <p>Tap each of the five stars to collect them. Some are hiding in plain sight!</p>
+    <div class="star-field" id="starField">
+    ${Array.from({length:5},(_,i)=>`<button class="hidden-star" onclick="collectStar(${i},this)" aria-label="Find star ${i+1}">✨</button>`).join('')}
+    </div>
+    <p id="starMessage">0 of 5 stars found</p>`;
+}
+function collectStar(i,button){
+  if(collected.has(i))return;
+  collected.add(i);button.textContent='⭐';button.disabled=true;
+  addStars(2);playTone(660);
+  document.getElementById('starMessage').textContent=collected.size+' of 5 stars found';
+  if(collected.size===5){
+    addStars(5);
+    showModal('🌟','Treasure found!','You found every hidden star! You are officially a star collector.');
+    document.getElementById('speech').textContent='Wow! You found them all! ⭐';
+  }
+}
+function startGuess(){
+  secretNumber=Math.floor(Math.random()*5)+1;guesses=0;
+  const area=document.getElementById('gameArea');
+  area.innerHTML=`
+    <h3 style="font-family:'Playfair Display';font-size:25px">Lucky Number 🍀</h3>
+    <p>I am thinking of a number between 1 and 5. Can you guess it?</p>
+    <div style="display:flex;justify-content:center;gap:10px;margin:20px;flex-wrap:wrap">
+    ${[1,2,3,4,5].map(n=>`<button class="small-btn" onclick="guess(${n})" style="font-size:18px;padding:15px 20px">${n}</button>`).join('')}
+    </div>
+    <p id="guessMessage">Choose your lucky number!</p>`;
+}
+function guess(n){
+  guesses++;
+  const msg=document.getElementById('guessMessage');
+  if(n===secretNumber){
+    msg.textContent='Correct! You guessed it in '+guesses+' tries! 🎉';
+    addStars(8);playTone(780);
+    showModal('🍀','Lucky you!','You guessed the secret number. Here are 8 stars for you!');
+    document.getElementById('speech').textContent='You are so lucky today! ♡';
+  }else{
+    msg.textContent=n<secretNumber?'A little higher! Try again 🌷':'A little lower! Try again 🌸';
+  }
+}
+function startMemory(){
+  const area=document.getElementById('gameArea');
+  const symbols=['🌸','🌙','🦋','🌸','🌙','🦋'];
+  memoryCards=symbols.sort(()=>Math.random()-.5);
+  firstCard=null;lockBoard=false;matched=0;
+  area.innerHTML=`
+    <h3 style="font-family:'Playfair Display';font-size:25px">Memory Match 🧩</h3>
+    <p>Find all three matching pairs. Tap two cards at a time.</p>
+    <div class="grid" style="max-width:420px;margin:20px auto;grid-template-columns:repeat(3,1fr)" id="memoryGrid">
+    ${memoryCards.map((s,i)=>`<button class="gift" id="m${i}" onclick="flipCard(${i})" style="font-size:30px;padding:20px">❔</button>`).join('')}
+    </div>
+    <p id="memoryMessage">Find the matching pairs!</p>`;
+}
+function flipCard(i){
+  if(lockBoard)return;
+  const card=document.getElementById('m'+i);
+  if(card.dataset.open==='yes'||card.dataset.matched==='yes')return;
+  card.textContent=memoryCards[i];card.dataset.open='yes';
+  if(firstCard===null){firstCard=i;return}
+  const first=document.getElementById('m'+firstCard);
+  if(memoryCards[firstCard]===memoryCards[i]){
+    first.dataset.matched='yes';card.dataset.matched='yes';
+    firstCard=null;matched++;addStars(3);playTone(650);
+    if(matched===3){
+      addStars(5);
+      document.getElementById('memoryMessage').textContent='All pairs matched! Amazing! 💗';
+      showModal('🧩','Puzzle complete!','You matched all the little pairs. Well done!');
+    }
+  }else{
+    lockBoard=true;
+    const previous=firstCard;firstCard=null;
+    setTimeout(()=>{
+      first.textContent='❔';card.textContent='❔';
+      first.dataset.open='no';card.dataset.open='no';
+      lockBoard=false;
+    },850);
+  }
+}
+function openSecret(){
+  if(stars<20){
+    showModal('🔒','Secret Room Locked','Collect at least 20 stars from the mini-games and gifts to unlock this room. Keep exploring!');
+    return;
+  }
+  showModal('🔐','Welcome to the Secret Room','You found a little hidden corner! Here is a reminder: you deserve beautiful days, lovely memories and plenty of reasons to smile. ♡');
+  addStars(5);
+}
+function playTone(frequency){
+  if(!soundOn)return;
+  try{
+    audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();
+    const oscillator=audioContext.createOscillator();
+    const gain=audioContext.createGain();
+    oscillator.frequency.value=frequency;
+    gain.gain.value=.045;
+    oscillator.connect(gain);gain.connect(audioContext.destination);
+    oscillator.start();gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.18);
+    oscillator.stop(audioContext.currentTime+.18);
+  }catch(e){}
+}
+document.getElementById('soundBtn').addEventListener('click',()=>{
+  soundOn=!soundOn;
+  document.getElementById('soundBtn').textContent=soundOn?'♫':'♪';
+  toast(soundOn?'Sound effects on':'Sound effects off');
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.nav[href]').forEach(link=>{
+  link.addEventListener('click',()=>{
+    document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
